@@ -1,0 +1,38 @@
+! mg
+! version 1
+
+Constant Story "The awakened Fairy";
+Constant Headline "you are a perfectly normal office worker, you are late for your meeting with Zelda Willams, AGAIN";
+
+Include "parser";
+Include "verblib";
+Include "grammar";
+
+[ Initialise;
+  location = Flower_Forest;
+  print "
+         OUCH! you bump your head on the wall, when you wake up, you find yourself in a beautifull forest of flowers.
+        ";
+];
+
+Object Flower_Forest "Flower Forest"
+ has scenery
+ has light
+ with description "giant flowers make the air smell sweet, you see a pixie town somewhere in the south, but you also see a giant duck pond to the east.
+                   ",
+ s_to Pixie_Town,
+ e_to Duck_Pond;
+
+Object Pixie_Town "Pixie Town"
+ has scenery
+ has light
+ with description "you see a few fairies with white colored skin, you assume these creatures are pixies, they look so beautifull, you see a pixie looking out her window it seems she is looking at a baby bear cave she points south east",
+ n_to Flower_Forest;
+
+Object Duck_Pond "Duck Pond"
+ has scenery
+ has light
+ with description "you see ADORABLE LITTLE DUCKS. okay, more like big. a cute one with a black dot on his beak takes a look at you, and runs to the north east, you feel a little worried.",
+ w_to Flower_Forest;
+
+End;
