@@ -2,7 +2,7 @@
 ! version 1
 
 Constant Story "The awakened Fairy";
-Constant Headline "you are a perfectly normal office worker, you are late for your meeting with Zelda Willams, AGAIN";
+Constant Headline "you are a perfectly normal office worker, you are late for your meeting with Zelda Willams, AGAIN you try to run as fast as you can, THAT is when everything starts to change.";
 
 Include "parser";
 Include "verblib";
@@ -18,16 +18,22 @@ Include "grammar";
 Object Flower_Forest "Flower Forest"
  has scenery
  has light
- with description "giant flowers make the air smell sweet, you see a pixie town somewhere in the south, but you also see a giant duck pond to the east.
-                   ",
+ with description "giant flowers make the air smell sweet, you see a pixie town somewhere in the south, but you also see a giant duck pond to the east, you also see something to the north, but you can't make it up.",
  s_to Pixie_Town,
- e_to Duck_Pond;
+ e_to Duck_Pond,
+ n_to Nymph_Fountian;
 
 Object Pixie_Town "Pixie Town"
  has scenery
  has light
  with description "you see a few fairies with white colored skin, you assume these creatures are pixies, they look so beautifull, you see a pixie looking out her window it seems she is looking at a baby bear cave she points south east",
- n_to Flower_Forest;
+ n_to Flower_Forest,
+ se_to Baby_Bear_Cave;
+
+Object Baby_Bear_Cave "Baby Bear Cave"
+ has scenery
+ with description "WOW! It's dark, too dark. you check your purse, do you have a lamp? If so, go east, if not, go to the Pixie Town, you remember seeing it at the north west.",
+nw_to Pixie_Town;
 
 Object Duck_Pond "Duck Pond"
  has scenery
@@ -35,4 +41,9 @@ Object Duck_Pond "Duck Pond"
  with description "you see ADORABLE LITTLE DUCKS. okay, more like big. a cute one with a black dot on his beak takes a look at you, and runs to the north east, you feel a little worried.",
  w_to Flower_Forest;
 
-End;
+Object Nymph_Fountian "Nymph_Fountian"
+ has scenery
+ has light
+ with description "just a big fountian, BORING. the second you start to turn around you see a humongous lady with pointy ears splashes out of the fountian, you look at the label 'Fountian of the nymph' good to know. she asks you a question. 'which palace do you wish to go to?'",
+ s_to Flower_Forest;
+
