@@ -18,10 +18,10 @@ Include "grammar";
 Object Flower_Forest "Flower Forest"
  has scenery
  has light
- with description "giant flowers make the air smell sweet, you see a pixie town somewhere in the south, but you also see a giant duck pond to the east, you also see something to the north, but you can't make it up.",
+ with description "giant flowers make the air smell sweet, you see a pixie town somewhere in the south, but you also see a giant duck pond to the east, you also see something to the north, but you can't make it out.",
  s_to Pixie_Town,
  e_to Duck_Pond,
- n_to Nymph_Fountian;
+ n_to Nymph_Fountain;
 
 Object Pixie_Town "Pixie Town"
  has scenery
@@ -38,12 +38,41 @@ nw_to Pixie_Town;
 Object Duck_Pond "Duck Pond"
  has scenery
  has light
- with description "you see ADORABLE LITTLE DUCKS. okay, more like big. a cute one with a black dot on his beak takes a look at you, and runs to the north east, you feel a little worried.",
- w_to Flower_Forest;
+ with description "you see ADORABLE LITTLE DUCKS. okay, more like big. a cute one with a black dot on his beak takes a look at you, and runs to the north, you feel a little worried.",
+ w_to Flower_Forest,
+ n_to Bear_Cave;
 
-Object Nymph_Fountian "Nymph_Fountian"
+Object Bear_Cave "Bear Cave"
+ has scenery
+ with description "'Come ON little guy, where are you?' you holler. then you see a big, big, big, big, big, big, big, big, bi- you get th point, she was big. but she was a bear. YOWZA! What do you do now?",
+s_to Duck_Pond,
+sw_to Flower_Forest;
+
+Object Nymph_Fountain "Nymph Fountain"
  has scenery
  has light
- with description "just a big fountian, BORING. the second you start to turn around you see a humongous lady with pointy ears splashes out of the fountian, you look at the label 'Fountian of the nymph' good to know. she asks you a question. 'which palace do you wish to go to?'",
- s_to Flower_Forest;
+ with description "just a big fountain, BORING. the second you start to turn around, a humongous lady with pointy ears splashes out of the fountain, you look at the label 'Fountain of the nymph' good to know. she asks you a question. 'which palace do you wish to go to? there is the fire palace to the west, earth palace to the east, air palace to the south east, and water palace to the south west'",
+ s_to Flower_Forest,
+ w_to Fire_Palace;
 
+Object Fire_Palace "Fire Palace"
+ has scenery
+ has light
+ with description "You hear a shaking in the ground.a red and gold bird emerges. he says 'I AM THE PHOENIX! YOU SHALL NOT PASS'. wow. you don't have many options. either you retreat, or you fight Mr feather man.",
+
+e_to Nymph_Fountain,
+s_to Pixie_Town,
+se_to Flower_Forest;
+
+Object -> greatsword "greatsword"
+ with name "greatsword" "big sword"
+ with description "It is big, studded with diamonds, and has silver at the end, it looks like it is for decoration but it will have to do. but it's really heavy though.";
+
+Object -> dragonfruit "dragonfruit"
+with name "dragonfruit" "fruit"
+with description "It's pink, you crack it open, on the inside you see a white inside with black dots on it.";
+
+Object -> canteen "canteen"
+with name "canteen" "water sack"
+with description "unlike the one at New York, it is covered in bear skin, sad. you love bears (ESPECIALLY pandas). but hey, it's useful. for drinking that is.";  
+End;
