@@ -58,21 +58,63 @@ Object Nymph_Fountain "Nymph Fountain"
 Object Fire_Palace "Fire Palace"
  has scenery
  has light
- with description "You hear a shaking in the ground.a red and gold bird emerges. he says 'I AM THE PHOENIX! YOU SHALL NOT PASS'. wow. you don't have many options. either you retreat, or you fight Mr feather man.",
+ with description "You see a palace studded with rubies to the west, it looks pretty. there are three signs, one that says pixie town to south, one says south east to the forest, last is a sign that says 'you must fight the phoenix to passs the test if you do, you may enter' so it seems you have a test, but there is a problem, what phoenix?",
 
 e_to Nymph_Fountain,
 s_to Pixie_Town,
-se_to Flower_Forest;
+se_to Flower_Forest,
+w_to Fire_Palace_interior;
 
 Object -> greatsword "greatsword"
- with name "greatsword" "big sword"
+ with name "greatsword" "sword",
  with description "It is big, studded with diamonds, and has silver at the end, it looks like it is for decoration but it will have to do. but it's really heavy though.";
 
 Object -> dragonfruit "dragonfruit"
-with name "dragonfruit" "fruit"
-with description "It's pink, you crack it open, on the inside you see a white inside with black dots on it.";
+ with name "dragonfruit" "fruit"
+ with description "It's pink, you crack it open, on the inside you see a white inside with black dots on it.";
 
 Object -> canteen "canteen"
-with name "canteen" "water sack"
-with description "unlike the one at New York, it is covered in bear skin, sad. you love bears (ESPECIALLY pandas). but hey, it's useful. for drinking that is.";  
+ with name "canteen",
+ with description "unlike the one at New York, it is covered in bear skin, sad. you love bears (ESPECIALLY pandas). but hey, it's useful. for drinking that is.";
+
+Object -> Phoenix "Phoenix"
+ with name "phoenix" "firebird",
+ with description "He is huge. his feathers are red, gold, and neon orange. his beak is pitch black and his claws are made of obsidain (I'm serrious!!!!)",
+  life [;
+       Answer: print_ret "The Phoenix booms a challenge!";
+       Kiss: print_ret "He says 'Get your slimy lips off of me!'";
+       Attack:
+         remove self;
+         print "The Phoenix is covered in scars. he looks at you and says, 'You are worthy, you may see queen Lorelli' uh oh, her name is lorelli? you assume you would probably be dead the moment you go into the palace.";
+         return true;
+     ],
+  has animate proper;
+
+Object Fire_Palace_Interior "Hot Palace Interior"
+ has scenery
+ has light
+ with description "You look inside, this place looks so magical, you see an elf in gold robes, you assume this must be the fire queen. she does not speak but she points to a pair of doors to the north that are marked 'Natalie' HEY! that's you!",
+e_to Fire_Palace,
+n_to Small_Room;
+
+Object -> Lorelli "Lorelli"
+with name "Lorelli" "Queen",
+with description " She is a beautifull elf, she has blonde hair and wears golden clothes, but she dosen't speak though.",
+life [;
+     Answer: print_ret  "...";
+     Kiss: print_ret  "she dosen't say anything but she makes a disgusted face and smoke comes from her fingers. she dosent look happy so you reconsidder";
+     Attack: print " she points her finger at you, YOOOOOOWCH! you tushie got burnt, something tells you that ";
+     ],
+has female animate proper;
+
+Object Small_Room "Small Room"
+has scenery
+has light
+with description "The room is tiny, not very much is here but the queen did say something about rewards, so here you are!",
+s_to Fire_Palace_Interior;
+
+Object -> Gold_Apple "Gold Apple"
+with name "Gold" "Apple",
+with description "it is a golden apple, it smells sweet and it looks really promissing.";  
+
 End;
