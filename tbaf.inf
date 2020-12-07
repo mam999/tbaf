@@ -53,13 +53,23 @@ Object Nymph_Fountain "Nymph Fountain"
  has light
  with description "just a big fountain, BORING. the second you start to turn around, a humongous lady with pointy ears splashes out of the fountain, you look at the label 'Fountain of the nymph' good to know. she asks you a question. 'which palace do you wish to go to? there is the fire palace to the west, earth palace to the east, air palace to the south east, and water palace to the south west'",
  s_to Flower_Forest,
- w_to Fire_Palace;
+ w_to Fire_Palace,
+sw_to Water_Palace;
 
 Object Fire_Palace "Fire Palace"
  has scenery
  has light
  with description "You see a palace studded with rubies to the west, it looks pretty. there are three signs, one that says pixie town to south, one says south east to the forest, last is a sign that says 'you must fight the phoenix to passs the test if you do, you may enter' so it seems you have a test, but there is a problem, what phoenix?",
-
+ before [; Go:
+           if (noun == w_obj && Phoenix in Fire_Palace) {
+             ! tried to go to the interior
+             print "you try to go west but the Pheonix blocks your way, HUH. EXCUSE ME BIRDY!";
+             return true;
+           } else {
+             ! tried to go anywhere else, let them go
+             return false;
+           }
+        ],
 e_to Nymph_Fountain,
 s_to Pixie_Town,
 se_to Flower_Forest,
@@ -84,11 +94,17 @@ Object -> Phoenix "Phoenix"
        Answer: print_ret "The Phoenix booms a challenge!";
        Kiss: print_ret "He says 'Get your slimy lips off of me!'";
        Attack:
-         remove self;
-         print "The Phoenix is covered in scars. he looks at you and says, 'You are worthy, you may see queen Lorelli' uh oh, her name is lorelli? you assume you would probably be dead the moment you go into the palace.";
-         return true;
+         if (greatsword in player) {
+           print "you swing your greatsword by his legs . ";
+	   remove self;
+           print "The Phoenix screeches from the wounds on his legs. before he dissintegrates, he looks at you and says, 'You are worthy, you may see queen Lorelli' uh oh, her name is lorelli? you assume you would probably be dead the moment you go into the palace.";
+           return true;
+         } else {
+           print "you pinch him, your hands engulf in flames. you yell'AH! AH! AH! HOT! HOT! HOT!";
+           return true;
+         }
      ],
-  has animate proper;
+  has male animate proper;
 
 Object Fire_Palace_Interior "Hot Palace Interior"
  has scenery
@@ -117,4 +133,19 @@ Object -> Gold_Apple "Gold Apple"
 with name "Gold" "Apple",
 with description "it is a golden apple, it smells sweet and it looks really promissing.";  
 
+Object Water_Palace
+has scenery
+has light
+with description "It looks like a big silver palace studded in Diamonds, a rumbling comes and a big monster comes out, IT'S NESSIE! nessie burps a very pleased burp at you, she trusts you. you think it is safe to go into the palace, it is in the south west. ",
+nw_to Nymph_Fountain;
+
+Object -> Nessie "Nessie"
+with name "Nessie"
+with description "The Loch Ness Monster is much more adorable than you thought she would, her dark green scales shone, she had some siutcases, it looks like she took a day off from scottland!",
+life [;
+	Answer: print_ret " 'BROOOOOOMP. (hmm, humans seem nice.) BOOOMOOOOMPH! (I think this means hello!)'";
+	Kiss: print_ret " 'WOOOOOOOOOM! (shucks, you're too kind!)'";
+	Attack: print_ret " she gives you the ouchy eyes, you realise you're a peacemaker, so  you reconsider.";
+],
+has female animate proper; 
 End;
