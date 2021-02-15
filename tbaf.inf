@@ -97,7 +97,7 @@ Object -> Phoenix "Phoenix"
          if (greatsword in player) {
            print "you swing your greatsword by his legs . ";
 	   remove self;
-           print "The Phoenix screeches from the wounds on his legs. before he dissintegrates, he looks at you and says, 'You are worthy, you may see queen Lorelli' uh oh, her name is lorelli? you assume you would probably be dead the moment you go into the palace.";
+           print "The Phoenix screeches from the wounds on his legs. before he dissintegrates, he looks at you and says, 'You are worthy, you may see queen Lorelli.'";
            return true;
          } else {
            print "you pinch him, your hands engulf in flames. you yell'AH! AH! AH! HOT! HOT! HOT!";
@@ -137,7 +137,8 @@ Object Water_Palace
 has scenery
 has light
 with description "It looks like a big silver palace studded in Diamonds, a rumbling comes and a big monster comes out, IT'S NESSIE! nessie burps a very pleased burp at you, she trusts you. you think it is safe to go into the palace, it is in the south west. ",
-nw_to Nymph_Fountain;
+nw_to Nymph_Fountain,
+sw_to Water_Palace_Interior;
 
 Object -> Nessie "Nessie"
 with name "Nessie"
@@ -148,4 +149,21 @@ life [;
 	Attack: print_ret " she gives you the ouchy eyes, you realise you're a peacemaker, so  you reconsider.";
 ],
 has female animate proper; 
+
+Object Water_Palace_Interior "Floral palace Interior"
+has scenery
+has light
+with description " There is a small water person on the aqua throne. 'hello, I am a water imp called Maryne. I come from the western seas and have wanted you to go to a western room, with a very prmosising,' BLAH BLAH BLAH. ALL SHE DOES IS FREAKING TALK. so you get distracted and look at the water lilies in the room.",
+ne_to Water_Palace;
+
+Object -> Maryne "Maryne"
+  with name "Maryne" "Imp",
+  with description " her ENTIRE body is covered in ocean water, she looks very beautifull, her hair is attached to the palace Moat, FREAKY!!!",
+  life [;
+     Answer: print_ret " 'OOOOOOH are you intrested in my long hair?? you see, I cannot go to the barbers because my hair goes right through the sicors. my 15 friends envy me, ESCPECIALLY Illia, do you know her?' You wake up, huh? what?";
+    Kiss: print_ret " your lips pass right through her while she laughs her face off. ' HA HA HA HA HA HA! TICKLES STOP! HA HA HA! '";
+    Attack: print_ret " your weapon pases right through her. ' ... why did you do that?'";
+  ],
+  has female animate proper;
+
 End;
